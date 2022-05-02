@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINNGS
+п»ї#define _CRT_SECURE_NO_WARNINNGS
 #include<Windows.h>
 #include<cstdio>
 #include"resource.h"
@@ -19,12 +19,12 @@ INT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam,LPARAM lParam);
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
 	LPSTR lpCmdLine, int nCmdShow)
 {
-	// Регистрация класса окна
+	// Р РµРіРёСЃС‚СЂР°С†РёСЏ РєР»Р°СЃСЃР° РѕРєРЅР°
 	WNDCLASSEX wc; // wc - Window Class
 	
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.style = CS_HREDRAW | CS_VREDRAW;
-	wc.lpfnWndProc = (WNDPROC)WndProc; // Имя функции - указатель на функцию
+	wc.lpfnWndProc = (WNDPROC)WndProc; // РРјСЏ С„СѓРЅРєС†РёРё - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = hInstance;
@@ -40,7 +40,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
 		MessageBox(NULL, "Class NULL", "Error", MB_OK | MB_ICONINFORMATION);
 		return 0;
 	}
-	// Создание окна
+	// РЎРѕР·РґР°РЅРёРµ РѕРєРЅР°
 	int screen_width = GetSystemMetrics(SM_CXSCREEN);
 	int screen_height = GetSystemMetrics(SM_CXSCREEN);
 	int window_width = g_START_X * 3 + (g_iBtnSize + g_interval) * 5 + g_interval;
@@ -55,13 +55,13 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
 		g_szClassName,
 		g_szWindowTitle,
 		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU /*| WS_THICKFRAME*/ | WS_MINIMIZEBOX,// | WS_MAXIMIZEBOX,
-		//WS_OVERLAPPEDWINDOW,	//Главное окно, у которого есть строка заголовка, 
-		//кнопки управления окном, может изменяться по размерам....
-		start_x, start_y,	//Положение окна на экране
-		window_width, window_height,	//Размер окна
+		//WS_OVERLAPPEDWINDOW,	//Р“Р»Р°РІРЅРѕРµ РѕРєРЅРѕ, Сѓ РєРѕС‚РѕСЂРѕРіРѕ РµСЃС‚СЊ СЃС‚СЂРѕРєР° Р·Р°РіРѕР»РѕРІРєР°, 
+		//РєРЅРѕРїРєРё СѓРїСЂР°РІР»РµРЅРёСЏ РѕРєРЅРѕРј, РјРѕР¶РµС‚ РёР·РјРµРЅСЏС‚СЊСЃСЏ РїРѕ СЂР°Р·РјРµСЂР°Рј....
+		start_x, start_y,	//РџРѕР»РѕР¶РµРЅРёРµ РѕРєРЅР° РЅР° СЌРєСЂР°РЅРµ
+		window_width, window_height,	//Р Р°Р·РјРµСЂ РѕРєРЅР°
 		NULL,	//Parent Window
-		NULL,	//ID ресурса меню, если окно главное (OVERLAPPED),
-				//или ID этого окна, если окно дочернее
+		NULL,	//ID СЂРµСЃСѓСЂСЃР° РјРµРЅСЋ, РµСЃР»Рё РѕРєРЅРѕ РіР»Р°РІРЅРѕРµ (OVERLAPPED),
+				//РёР»Рё ID СЌС‚РѕРіРѕ РѕРєРЅР°, РµСЃР»Рё РѕРєРЅРѕ РґРѕС‡РµСЂРЅРµРµ
 		hInstance,
 		NULL
 	);
@@ -71,9 +71,9 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
 		return 0;
 	}
 
-	ShowWindow(hwnd, nCmdShow); // Задает режим отображения окна
-	UpdateWindow(hwnd); // Рисует окно
-	// Запуск цикла сообщений
+	ShowWindow(hwnd, nCmdShow); // Р—Р°РґР°РµС‚ СЂРµР¶РёРј РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РѕРєРЅР°
+	UpdateWindow(hwnd); // Р РёСЃСѓРµС‚ РѕРєРЅРѕ
+	// Р—Р°РїСѓСЃРє С†РёРєР»Р° СЃРѕРѕР±С‰РµРЅРёР№
 	MSG	msg;
 	while (GetMessage(&msg, NULL, 0, 0) > 0) {
 		TranslateMessage(&msg);
@@ -102,7 +102,7 @@ INT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		);
 
 		
-		// Построение кнопок
+		// РџРѕСЃС‚СЂРѕРµРЅРёРµ РєРЅРѕРїРѕРє
 		{ 
 
 		INT digit;
@@ -152,7 +152,7 @@ INT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		);
 
 
-		} // Область применения
+		} // РћР±Р»Р°СЃС‚СЊ РїСЂРёРјРµРЅРµРЅРёСЏ
 
 		break;
 	case WM_COMMAND:
@@ -162,7 +162,7 @@ INT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	break;
 	//case WM_CLOSE: DestroyWindow(hwnd);
 	case WM_DESTROY:
-		PostQuitMessage(0); // PЗакрытие окна
+		PostQuitMessage(0); // PР—Р°РєСЂС‹С‚РёРµ РѕРєРЅР°
 		break;
 	default: return DefWindowProc(hwnd, uMsg, wParam, lParam);
 
